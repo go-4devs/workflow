@@ -64,6 +64,7 @@ type Workflow struct {
 	mu          sync.Mutex
 }
 
+// Get transition by data and transit
 func (w *Workflow) Get(data Data, transit fmt.Stringer) *Transition {
 	tr, ok := w.transitions[transit]
 	if !ok || !tr.Can(data) {
